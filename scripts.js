@@ -77,7 +77,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
             fly.addEventListener('click', () => {
                 if (index === 0) window.open("https://www.instagram.com/elifxplore/", "_blank");
-                if (index === 1) window.location.href = "mailto:fileniles@gmail.com";
+                if (index === 1) {
+                    // Spamfreier E-Mail-Link
+                    const encodedEmail = "ZWxpZnhwbG9yZUBnbWFpbC5jb20="; // Base64-kodiert
+                    const decodedEmail = atob(encodedEmail); // Dekodieren
+                    window.location.href = `mailto:${decodedEmail}`;
+                }
                 if (index === 2) window.open("https://www.youtube.com/@elifxplore", "_blank");
             });
         });
