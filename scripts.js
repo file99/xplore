@@ -2,6 +2,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const fountainContainer = document.querySelector('.fountain-container');
     const fountain = document.querySelector('.fountain');
     const audio = document.getElementById('fountain-sound');
+    const fountainEmoji = document.createElement('div');
+    fountainEmoji.style.position = 'absolute';
+    fountainEmoji.style.top = '10px';
+    fountainEmoji.style.right = '10px';
+    fountainEmoji.style.fontSize = '2rem';
+    fountainEmoji.style.pointerEvents = 'none';
+    fountainEmoji.innerHTML = '🎧';
+    fountain.appendChild(fountainEmoji);
 
     function generateGrass() {
         const grassCount = Math.max(window.innerWidth / 10, 100);
@@ -91,8 +99,10 @@ document.addEventListener('DOMContentLoaded', function () {
     fountain.addEventListener('click', () => {
         if (audio.paused) {
             audio.play();
+            fountainEmoji.innerHTML = '🎧';
         } else {
             audio.pause();
+            fountainEmoji.innerHTML = '🚫';
         }
     });
 
