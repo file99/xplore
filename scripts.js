@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     generateGrass();
 
-    // Funktion, um die Startpositionen der Fliegen zu berechnen
     function calculateStartPositions() {
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
@@ -39,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let startPositions = calculateStartPositions();
 
-    // Funktion, um Fliegen zu bewegen
     function initiateFlyMovement(fly, baseAmplitude, period, startPosition, reverse = false) {
         const startTime = Date.now();
         let lastX = startPosition.x;
@@ -70,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function () {
         moveFly();
     }
 
-    // Funktion, um Fliegen zu initialisieren
     function initializeFlies() {
         const flies = document.querySelectorAll('.fly');
         flies.forEach((fly, index) => {
@@ -83,9 +80,8 @@ document.addEventListener('DOMContentLoaded', function () {
             fly.addEventListener('click', () => {
                 if (index === 0) window.open("https://www.instagram.com/elifxplore/", "_blank");
                 if (index === 1) {
-                    // Spamfreier E-Mail-Link
-                    const encodedEmail = "ZWxpZnhwbG9yZUBnbWFpbC5jb20="; // Base64-kodiert
-                    const decodedEmail = atob(encodedEmail); // Dekodieren
+                    const encodedEmail = "ZWxpZnhwbG9yZUBnbWFpbC5jb20="; // Base64
+                    const decodedEmail = atob(encodedEmail);
                     window.location.href = `mailto:${decodedEmail}`;
                 }
                 if (index === 2) window.open("https://www.youtube.com/@elifxplore", "_blank");
@@ -93,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Funktion, um Emoji neben der Maus anzuzeigen
+    // Emoji anzeigen
     function showEmoji(emoji) {
         const emojiElement = document.createElement('div');
         emojiElement.textContent = emoji;
@@ -103,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
         emojiElement.style.zIndex = '1000';
         document.body.appendChild(emojiElement);
 
-        // Aktualisiere die Position basierend auf der Maus
+        // Mausbewegung
         function updatePosition(event) {
             emojiElement.style.left = `${event.pageX + 10}px`;
             emojiElement.style.top = `${event.pageY + 10}px`;
@@ -111,7 +107,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         document.addEventListener('mousemove', updatePosition);
 
-        // Entferne das Emoji nach 2 Sekunden
         clearTimeout(emojiTimeout);
         emojiTimeout = setTimeout(() => {
             document.removeEventListener('mousemove', updatePosition);
@@ -119,24 +114,22 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 2000);
     }
 
-    // Brunnen-Klick-Funktion
+    // Brunnen-Klick
     fountain.addEventListener('click', () => {
         if (audio.paused) {
             audio.play();
-            showEmoji('🎧'); // Kopfhörer-Emoji anzeigen
+            showEmoji('🎧');
         } else {
             audio.pause();
-            showEmoji('🚫'); // Warnzeichen-Emoji anzeigen
+            showEmoji('🚫');
         }
     });
 
-    // Auf Fenstergröße reagieren
     window.addEventListener('resize', () => {
         generateGrass();
         startPositions = calculateStartPositions();
         initializeFlies();
     });
 
-    // Fliegen initialisieren
     initializeFlies();
 });
