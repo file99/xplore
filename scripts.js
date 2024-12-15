@@ -92,7 +92,12 @@ document.addEventListener('DOMContentLoaded', function () {
         emoji.style.position = 'absolute';
         emoji.style.top = `${event.clientY}px`;
         emoji.style.left = `${event.clientX}px`;
-        emoji.style.fontSize = '2rem';
+
+        // Adjust font size based on viewport size
+        const viewportSize = Math.min(window.innerWidth, window.innerHeight);
+        const emojiSize = Math.max(viewportSize * 0.05, 16); // Minimum size of 16px
+        emoji.style.fontSize = `${emojiSize}px`;
+
         emoji.style.pointerEvents = 'none';
         emoji.style.zIndex = '1000'; // Ensure it's above other elements
         emoji.innerText = audio.paused ? '🎧' : '🚫';
