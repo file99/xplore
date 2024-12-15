@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Adjust font size based on viewport size
         const viewportSize = Math.min(window.innerWidth, window.innerHeight);
-        const emojiSize = Math.max(viewportSize * 0.05, 16); // Minimum size of 16px
+        const emojiSize = Math.max(viewportSize * 0.05, 11); // Minimum size of 16px
         emoji.style.fontSize = `${emojiSize}px`;
 
         emoji.style.pointerEvents = 'none';
