@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const audio = document.getElementById('fountain-sound');
 
     function generateGrass() {
-        const grassCount = Math.max(window.innerWidth / 10, 100);
+        const grassCount = Math.max(window.innerWidth / 7, 150);
         fountainContainer.querySelectorAll('.grass').forEach(grass => grass.remove());
         for (let i = 0; i < grassCount; i++) {
             const grass = document.createElement('div');
